@@ -1,7 +1,7 @@
 import numpy as np
 from flask import Flask, request, render_template
 import pickle
-
+import os
 app = Flask(__name__)
 
 # Load the pre-trained model
@@ -37,4 +37,4 @@ def predict():
         return render_template('index.html', prediction_text=f"Error: {str(e)}")
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
